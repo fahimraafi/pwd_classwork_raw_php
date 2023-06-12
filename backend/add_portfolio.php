@@ -6,6 +6,13 @@
             <div class="card-header mt-4" style="font-size: 25px">
                 Add Portfolio
             </div>
+
+            <?php if (isset($_SESSION["portfolio_upload_successfull"])): ?>
+                <div class="alert alert-success">
+                    <?=$_SESSION["portfolio_upload_successfull"];?>
+                </div>
+            <?php endif; ?>    
+
             <div class="card-body">
                 <form action="add_portfolio_post.php" method="post" enctype="multipart/form-data" >
 
@@ -40,4 +47,5 @@
 
 <?php require_once('footer.php'); 
 unset($_SESSION["portfolio_data_insert_error"]);
+unset($_SESSION["portfolio_upload_successfull"]);
 ?>
