@@ -103,6 +103,17 @@ $profile_photo = $profile_photo_assoc['profile_photo'];
                             </li>      
                         </ul>
                     </li>
+                    <li>
+                        <a href=""><i class="material-icons-two-tone">poll</i>Facts<i class="material-icons has-sub-menu">keyboard_arrow_right</i></a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="add_facts.php">Add Facts</a>
+                            </li>
+                            <li>
+                                <a href="view_facts.php">View Facts</a>
+                            </li>      
+                        </ul>
+                    </li>
                     <li class="sidebar-title">
                         UI Elements
                     </li>

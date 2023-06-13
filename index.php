@@ -311,51 +311,30 @@ $db_connect = mysqli_connect('localhost', 'root', '', 'db_web_dev');
             <section class="fact-area">
                 <div class="container">
                     <div class="fact-wrap">
+                        <?php 
+                        $facts_data_fetch_query = "SELECT * FROM facts WHERE facts_status = 'active'";
+                        $facts_data_fetch_query_execution = mysqli_query($db_connect, $facts_data_fetch_query);
+                        $facts_data_fetch_query_assoc = mysqli_fetch_assoc($facts_data_fetch_query_execution);
+                        ?>
+
                         <div class="row justify-content-between">
+
+                        <?php foreach ($facts_data_fetch_query_execution as $value): ?>
+
                             <div class="col-xl-2 col-lg-3 col-sm-6">
                                 <div class="fact-box text-center mb-50">
                                     <div class="fact-icon">
-                                        <i class="flaticon-award"></i>
+                                        <i class="<?=$value['facts_icon']; ?>"></i>
                                     </div>
                                     <div class="fact-content">
-                                        <h2><span class="count">245</span></h2>
-                                        <span>Feature Item</span>
+                                        <h2><span class="count"> <?=$value['facts_qty']; ?> </span></h2>
+                                        <span> <?=$value['facts_title']; ?> </span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-2 col-lg-3 col-sm-6">
-                                <div class="fact-box text-center mb-50">
-                                    <div class="fact-icon">
-                                        <i class="flaticon-like"></i>
-                                    </div>
-                                    <div class="fact-content">
-                                        <h2><span class="count">345</span></h2>
-                                        <span>Active Products</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3 col-sm-6">
-                                <div class="fact-box text-center mb-50">
-                                    <div class="fact-icon">
-                                        <i class="flaticon-event"></i>
-                                    </div>
-                                    <div class="fact-content">
-                                        <h2><span class="count">39</span></h2>
-                                        <span>Year Experience</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-3 col-sm-6">
-                                <div class="fact-box text-center mb-50">
-                                    <div class="fact-icon">
-                                        <i class="flaticon-woman"></i>
-                                    </div>
-                                    <div class="fact-content">
-                                        <h2><span class="count">3</span>k</h2>
-                                        <span>Our Clients</span>
-                                    </div>
-                                </div>
-                            </div>
+                            
+                            <?php endforeach; ?>
+                            
                         </div>
                     </div>
                 </div>

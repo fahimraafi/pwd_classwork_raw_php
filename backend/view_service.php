@@ -17,55 +17,58 @@ require_once('header.php');
                 $service_data_retrieve_implementation = mysqli_query($db_connect, $service_data_retrieve_query);
                 ?>
 
-                <form action="view_service_post.php" method="post">
-                    <table class="table table-success table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col" class="fw-bold text-black text-center">#SN</th>
-                                <th scope="col" class="fw-bold text-black text-center">Service ID</th>
-                                <th scope="col" class="fw-bold text-black text-center">Service Name</th>
-                                <th scope="col" class="fw-bold text-black text-center">Service Description</th>
-                                <th scope="col" class="fw-bold text-black text-center">Service Icon</th>
-                                <th scope="col" class="fw-bold text-black text-center">Service Status</th>
-                                <th scope="col" class="fw-bold text-black text-center">Edit Service</th>
-                                <th scope="col" class="fw-bold text-black text-center"> Delete Service </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <?php foreach ($service_data_retrieve_implementation as $key => $services) : ?>
-                                <tr>
-                                    <th scope="row" class="align-middle"> <?= ++$key; ?> </th>
-                                    <td class="align-middle"> <?= $services['service_id']; ?> </td>
-                                    <td class="align-middle"> <?= $services['service_name']; ?> </td>
-                                    <td class="align-middle"> <?= $services['service_description']; ?> </td>
-                                    <td class="align-middle"> <?= $services['service_icon']; ?> </td>
-                                    <td class="align-middle"> <?= $services['service_status']; ?> </td>
-                                    <td class="align-middle"> 
-                                        <button type="submit" class="btn btn-success" name="edit_service"> Edit </button> 
-                                    </td>
-                                    <td class="align-middle"> 
-                                        <button type="submit" class="btn btn-danger" name="delete_service"> Delete </button>
-                                    </td>
-
-
+                <div class="example-container">
+                    <div class="example-content">
+                        <table class="table">
+                            <thead class="table-dark">
+                                <tr class="text-center align-middle">
+                                    <th scope="col">#SN</th>
+                                    <th scope="col">Service ID</th>
+                                    <th scope="col">Service Name</th>
+                                    <th scope="col">Service Description</th>
+                                    <th scope="col">Service Icon</th>
+                                    <th scope="col">Service Status</th>
+                                    <th scope="col">Edit Service</th>
+                                    <th scope="col">Delete Service</th>
                                 </tr>
-                            <?php endforeach; ?>
+                            </thead>
+                            <tbody>
 
-                        </tbody>
-                    </table>
-                </form>
+                                <?php foreach ($service_data_retrieve_implementation as $key => $services) : ?>
+                                    <tr>
+                                        <th scope="row"> <?= ++$key; ?> </th>
+                                        <td> <?= $services['service_id'] ?> </td>
+                                        <td> <?= $services['service_name'] ?> </td>
+                                        <td> <?= $services['service_description'] ?> </td>
+                                        <td> <?= $services['service_icon'] ?> </td>
+                                        <td> <?= $services['service_status'] ?> </td>
+                                        <td>
+                                            <a href="edit_service.php" class="btn btn-success">
+                                                Edit
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-danger">
+                                                Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
 
 
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 
 
 
-<?php
-require_once('footer.php');
-?>
+    <?php
+    require_once('footer.php');
+    ?>
